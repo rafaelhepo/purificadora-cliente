@@ -25,7 +25,7 @@ export default function Home() {
   if (!confirmado) {
     return (
       <div style={{ textAlign: "center", padding: "50px" }}>
-        <h1>💧 Purificadora de agua Juan Carlos</h1>
+        <h1>💧 Purificadora de agua Juan Pablo</h1>
         <p>Por favor ingresa tu nombre:</p>
         <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
           <input
