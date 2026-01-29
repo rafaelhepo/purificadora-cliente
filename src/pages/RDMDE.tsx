@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
-// Tipos de equipos predefinidos
+// Tipos de equipos predefinidos (MANTENER TODOS los tipos)
 type EquipoPredefinido =
-  | "zeolita"
-  | "carbonActivado"
+  | "osmosisInversa"
+  | "filtroCarbonBlock"
   | "plata"
   | "filtroPulidor"
   | "ozono"
@@ -37,8 +37,8 @@ type FilaPDF = [string, string, string, string]; // [Fecha, Equipo, Observacione
 
 // Textos predefinidos por equipo
 const observacionesPredefinidas: Record<EquipoPredefinido, string> = {
-  zeolita: "Retrolavado al lecho profundo",
-  carbonActivado: "Retrolavado al carbón activado",
+  osmosisInversa: "Retrolavado al lecho profundo",
+  filtroCarbonBlock: "Retrolavado al carbón activado",
   plata: "Lavado manual a las barras de plata",
   filtroPulidor: "Lavado manual y desinfección del cartucho y filtro",
   ozono: "Revisión de sistema de ozono",
@@ -50,8 +50,8 @@ const observacionesPredefinidas: Record<EquipoPredefinido, string> = {
 
 // Nombres amigables para mostrar
 const nombresAmigables: Record<EquipoPredefinido, string> = {
-  zeolita: "Zeolita",
-  carbonActivado: "Carbón Activado",
+  osmosisInversa: "Osmosis Inversa",
+  filtroCarbonBlock: "Filtro Carbon en Block",
   plata: "Plata",
   filtroPulidor: "Filtro Pulidor",
   ozono: "Ozono",
@@ -69,8 +69,8 @@ export default function RDMDE() {
     {
       fecha: "",
       equipos: {
-        zeolita: false,
-        carbonActivado: false,
+        osmosisInversa: false,
+        filtroCarbonBlock: false,
         plata: false,
         filtroPulidor: false,
         ozono: false,
@@ -93,8 +93,8 @@ export default function RDMDE() {
         {
           fecha: "",
           equipos: {
-            zeolita: false,
-            carbonActivado: false,
+            osmosisInversa: false,
+            filtroCarbonBlock: false,
             plata: false,
             filtroPulidor: false,
             ozono: false,
@@ -173,6 +173,8 @@ export default function RDMDE() {
         format: "a4",
       });
 
+      // Logo comentado - No aparece en el PDF
+      /*
       const logo = await fetch("/lafuente.png");
       const logoBlob = await logo.blob();
       const reader = new FileReader();
@@ -185,9 +187,13 @@ export default function RDMDE() {
         const xPos = (pageWidth - logoWidth) / 2;
 
         doc.addImage(imgData, "PNG", xPos, 10, logoWidth, logoHeight);
+      */
 
+        const pageWidth = doc.internal.pageSize.getWidth();
+
+        // Título - posición ajustada (de 40 a 20)
         doc.setFontSize(16);
-        doc.text("Registro de Mantenimiento de Equipo", pageWidth / 2, 40, {
+        doc.text("Registro de Mantenimiento de Equipo", pageWidth / 2, 20, {
           align: "center",
         });
 
@@ -213,8 +219,9 @@ export default function RDMDE() {
           }
         });
 
+        // Tabla - posición ajustada (de 50 a 30)
         autoTable(doc, {
-          startY: 50,
+          startY: 30,
           head: [["Fecha", "Equipo", "Observaciones", "Revisó"]],
           body: filas,
           theme: "grid",
@@ -224,9 +231,9 @@ export default function RDMDE() {
         });
 
         doc.save("limpieza_equipos_detallado.pdf");
-      };
+      //};
 
-      reader.readAsDataURL(logoBlob);
+      //reader.readAsDataURL(logoBlob);
     } catch (error) {
       console.error("Error al generar el PDF:", error);
       alert("Ocurrió un error al generar el PDF.");
@@ -243,6 +250,8 @@ export default function RDMDE() {
         minHeight: "100vh",
       }}
     >
+      {/* Logo comentado - No aparece en la interfaz */}
+      {/*
       <img
         src="/lafuente.png"
         alt="Logo Purificadora"
@@ -252,6 +261,7 @@ export default function RDMDE() {
           marginBottom: "15px",
         }}
       />
+      */}
 
       <h2 style={{ color: "#1c3853", marginBottom: "20px" }}>
         Registro de Mantenimiento de Equipo
@@ -290,6 +300,18 @@ export default function RDMDE() {
             <br />
             {Object.keys(registro.equipos).map((eq) => {
               const equipo = eq as EquipoPredefinido;
+              
+              // 👇 SOLO COMENTAR EL RENDERIZADO DE LOS EQUIPOS QUE NO QUIERES
+              if (
+                equipo === "plata" || 
+                equipo === "ozono" || 
+                equipo === "lamparaUV2" || 
+                equipo === "ozonoAmbiental" || 
+                equipo === "lamparaVerificadora"
+              ) {
+                return null; // No renderizar estos equipos
+              }
+              
               return (
                 <div key={equipo} style={{ margin: "8px 0" }}>
                   <label>

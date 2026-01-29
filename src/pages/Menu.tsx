@@ -42,12 +42,12 @@ export default function Menu() {
         { path: "/registro-de-evaluacion-de-envases", label: "Registro de Evaluación de Envases" },
         { path: "/registro-de-analisis-periodico-del-agua", label: "Registro de Análisis Periódico del Agua" },
         { path: "/registro-de-primeras-entradas-primeras-salidas", label: "Registro de Primeras Entradas Primeras Salidas" },
-        /* { path: "/registro-de-ordenes-de-produccion", label: "Registro de Órdenes de Producción" },
-        { path: "/registro-para-la-limpieza-y-desinfeccion-de-areas", label: "Registro para Limpieza y Desinfección de Áreas" },
-        { path: "/registro-para-la-limpieza-y-desinfeccion-de-vehiculos", label: "Registro para la Limpieza de Vehículos" },
         { path: "/registro-de-mantenimiento-de-equipo", label: "Registro de Mantenimiento de Equipo" },
-        { path: "/metodo-de-desinfeccion", label: "Método de Desinfección" },
-        { path: "/concentracion-de-cloro", label: "Concentración de Cloro" }, */
+        /*{ path: "/registro-de-ordenes-de-produccion", label: "Registro de Órdenes de Producción" },*/
+        /*{ path: "/registro-para-la-limpieza-y-desinfeccion-de-areas", label: "Registro para Limpieza y Desinfección de Áreas" },*/
+        /*{ path: "/registro-para-la-limpieza-y-desinfeccion-de-vehiculos", label: "Registro para la Limpieza de Vehículos" },*/
+        /*{ path: "/metodo-de-desinfeccion", label: "Método de Desinfección" },*/
+        /*{ path: "/concentracion-de-cloro", label: "Concentración de Cloro" },*/
       ].map((item) => (
         <Link to={item.path} state={{ nombre }} key={item.path}>
           <button
