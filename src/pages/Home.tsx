@@ -7,7 +7,7 @@ export default function Home() {
   const [error, setError] = useState("");
 
   // Lista de nombres válidos
-  const nombresValidos = ["Rafa", 'Juan Carlos', '4463'];
+  const nombresValidos = [ 'Juan Pablo' ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -66,7 +66,7 @@ export default function Home() {
   // Si ya confirmó el nombre, muestra la página original
   return (
     <div style={{ textAlign: "center", padding: "50px" }}>
-      <h1>💧 Purificadora de agua La Fuente</h1>
+      <h1>🥇 JDS Forms</h1>
       <p>Sistema de reportes y control</p>
       <p>
         <strong>Bienvenido</strong> {nombre}
