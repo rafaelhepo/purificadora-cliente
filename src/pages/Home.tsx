@@ -7,7 +7,7 @@ export default function Home() {
   const [error, setError] = useState("");
 
   // Lista de nombres válidos
-  const nombresValidos = [ 'Juan Pablo' ];
+  const nombresValidos = [ 'Enero' ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
