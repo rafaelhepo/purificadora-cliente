@@ -72,7 +72,7 @@ export default function RDAPDA() {
         // Título - posición ajustada (de 40 a 20)
         doc.setFontSize(16);
         doc.text(
-          "Registro de Analisis Periodico del Agua (determinación de cloro residual)",
+          "Registro de Analisis Periodico del Agua",
           pageWidth / 2,
           20,
           { align: "center" }
@@ -81,7 +81,7 @@ export default function RDAPDA() {
         // Tabla con todos los registros - posición ajustada (de 50 a 30)
         autoTable(doc, {
           startY: 30,
-          head: [["Fecha", "Agua de entrada (lectura ppm) Pipa", "Filtro 1 (lectura ppm) Lecho profundo", "Filtro 2 (lectura ppm) Carbon activado", "Agua de Grifo", "Realizó", "Observaciones"]],
+          head: [["Fecha", "Agua de entrada Pipa", "Numero de Muestra", "Tamaño de la muestra", "Metodo de Analisis", "Realizó", "Observaciones"]],
           body: registros.map((r) => [
             r.fecha,
             r.aguaEntrada,
