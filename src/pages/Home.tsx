@@ -7,7 +7,7 @@ export default function Home() {
   const [error, setError] = useState("");
 
   // Lista de nombres válidos
-  const nombresValidos = [ 'Enero' ];
+  const nombresValidos = [ 'Juan Pablo Sanchez Mares', 'juan pablo sanchez mares', 'JUAN PABLO SANCHEZ MARES', 'Juan Pablo Sánchez Mares' ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -25,7 +25,7 @@ export default function Home() {
   if (!confirmado) {
     return (
       <div style={{ textAlign: "center", padding: "50px" }}>
-        <h1>💧 Purificadora de agua Juan Pablo</h1>
+        <h1>💧 Purificadora de agua Juan Pablo Sancheaz</h1>
         <p>Por favor ingresa tu nombre:</p>
         <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
           <input
