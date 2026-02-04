@@ -86,67 +86,77 @@ export default function MDCRYAC() {
   // Generar PDF
   const generarPDF = async () => {
     try {
-      const doc = new jsPDF();
+      const doc = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4",
+      });
 
-      // Logo comentado - No aparece en el PDF
-      /*
-      const logo = await fetch("/lafuente.png");
-      const logoBlob = await logo.blob();
-      const reader = new FileReader();
+      const pageWidth = doc.internal.pageSize.getWidth();
 
-      reader.onloadend = () => {
-        const imgData = reader.result as string;
+      doc.setFontSize(16);
+      doc.text("Registro de Análisis Periódico del Agua", pageWidth / 2, 20, {
+        align: "center",
+      });
 
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const logoWidth = 25;
-        const logoHeight = 25;
-        const xPos = (pageWidth - logoWidth) / 2;
-
-        doc.addImage(imgData, "PNG", xPos, 10, logoWidth, logoHeight);
-      */
-        const pageWidth = doc.internal.pageSize.getWidth();
-
-        doc.setFontSize(16);
-        doc.text("Registro de Análisis Periódico del Agua", pageWidth / 2, 20, {
-          align: "center",
-        });
-
-        autoTable(doc, {
-          startY: 30,
-          head: [
-            [
-              "Fecha",
-              "Hora (de - a)",
-              "Punto de Muestreo",
-              "Método",
-              "Cloro Residual",
-              "pH",
-              "Coliformes Totales",
-              "Coliformes Fecales",
-              "Realizó",
-              "Observaciones",
-            ],
+      autoTable(doc, {
+        startY: 30,
+        head: [
+          [
+            "Fecha",
+            "Hora (de - a)",
+            "Punto de Muestreo",
+            "Método",
+            "Cloro Residual",
+            "pH",
+            "Coliformes Totales",
+            "Coliformes Fecales",
+            "Realizó",
+            "Observaciones",
           ],
-          body: metodos.map((r) => [
-            r.fecha,
-            `${r.hora.de} - ${r.hora.a}`,
-            r.puntoDeMuestreo,
-            r.metodo,
-            r.cloroResidual,
-            r.ph,
-            r.coliformesTotales,
-            r.coliformesFecales,
-            r.realizo,
-            r.observaciones,
-          ]),
-          theme: "grid",
-          headStyles: { fillColor: [52, 152, 219], textColor: 255 },
-          bodyStyles: { fillColor: [245, 251, 255] },
-        });
+        ],
+        body: metodos.map((r) => [
+          r.fecha,
+          `${r.hora.de} - ${r.hora.a}`,
+          r.puntoDeMuestreo,
+          r.metodo,
+          r.cloroResidual,
+          r.ph,
+          r.coliformesTotales,
+          r.coliformesFecales,
+          r.realizo,
+          r.observaciones,
+        ]),
+        theme: "grid",
+        headStyles: { 
+          fillColor: [52, 152, 219], 
+          textColor: 255,
+          fontSize: 10
+        },
+        bodyStyles: { 
+          fillColor: [245, 251, 255],
+          fontSize: 8
+        },
+        styles: { 
+          fontSize: 8,
+          cellPadding: 2,
+          overflow: 'linebreak'
+        },
+        columnStyles: {
+          0: { cellWidth: 25 },
+          1: { cellWidth: 30 },
+          2: { cellWidth: 30 },
+          3: { cellWidth: 25 },
+          4: { cellWidth: 25 },
+          5: { cellWidth: 15 },
+          6: { cellWidth: 30 },
+          7: { cellWidth: 30 },
+          8: { cellWidth: 25 },
+          9: { cellWidth: 40 }
+        }
+      });
 
-        doc.save("analisis_agua.pdf");
-      //};
-      //reader.readAsDataURL(logoBlob);
+      doc.save("analisis_agua.pdf");
     } catch (error) {
       console.error("Error al generar el PDF:", error);
       alert("Ocurrió un error al generar el PDF.");
@@ -163,19 +173,6 @@ export default function MDCRYAC() {
         minHeight: "100vh",
       }}
     >
-      {/* Logo comentado - No aparece en la interfaz */}
-      {/* 
-      <img
-        src="/lafuente.png"
-        alt="Logo Purificadora"
-        style={{
-          maxWidth: "120px",
-          height: "auto",
-          marginBottom: "15px",
-        }}
-      />
-      */}
-
       <h2 style={{ color: "#1c3853", marginBottom: "20px" }}>
         Registro de Análisis Periódico del Agua
       </h2>

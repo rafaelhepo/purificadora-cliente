@@ -37,8 +37,8 @@ type FilaPDF = [string, string, string, string]; // [Fecha, Equipo, Observacione
 
 // Textos predefinidos por equipo
 const observacionesPredefinidas: Record<EquipoPredefinido, string> = {
-  osmosisInversa: "Retrolavado al lecho profundo",
-  filtroCarbonBlock: "Retrolavado al carbón activado",
+  osmosisInversa: "Regeneración",
+  filtroCarbonBlock: "Retrolavado",
   plata: "Lavado manual a las barras de plata",
   filtroPulidor: "Lavado manual y desinfección del cartucho y filtro",
   ozono: "Revisión de sistema de ozono",
