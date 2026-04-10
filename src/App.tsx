@@ -12,6 +12,7 @@ import MDCRYAC from "./pages/MDCRYAC";
 import RDMDE from "./pages/RDMDE";
 import MDD from "./pages/MDD";
 import CDC from "./pages/CDC";
+import BDL from "./pages/BDL";
 
 export default function App() {
   return (
@@ -30,6 +31,8 @@ export default function App() {
         <Route path="/registro-de-mantenimiento-de-equipo" element={<RDMDE />} />
         <Route path="/metodo-de-desinfeccion" element={<MDD />} />
         <Route path="/concentracion-de-cloro" element={<CDC />} />
+        <Route path="/bitacora-de-limpieza" element={<BDL />} />
+
       </Routes>
     </Router>
   );

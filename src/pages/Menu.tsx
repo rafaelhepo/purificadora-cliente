@@ -48,6 +48,7 @@ export default function Menu() {
         /*{ path: "/registro-para-la-limpieza-y-desinfeccion-de-vehiculos", label: "Registro para la Limpieza de Vehículos" },*/
         /*{ path: "/metodo-de-desinfeccion", label: "Método de Desinfección" },*/
         /*{ path: "/concentracion-de-cloro", label: "Concentración de Cloro" },*/
+        { path: "/bitacora-de-limpieza", label: "Bitacora de limpieza" },
       ].map((item) => (
         <Link to={item.path} state={{ nombre }} key={item.path}>
           <button

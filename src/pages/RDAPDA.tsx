@@ -16,7 +16,7 @@ type Registro = {
 export default function RDAPDA() {
 
   const location = useLocation();
-  const nombreUsuario = (location.state as { nombre?: string }) ?.nombre || "";
+  const nombreUsuario = (location.state as { nombre?: string })?.nombre || "";
 
   const [registros, setRegistros] = useState<Registro[]>([
     { fecha: "", aguaEntrada: "", numeroMuestra: "", tamanoMuestra: "", metodoAnalisis: "", realizo: "", observaciones: "" },
@@ -39,6 +39,13 @@ export default function RDAPDA() {
     const nuevosRegistros = [...registros];
     nuevosRegistros[index][field] = value;
     setRegistros(nuevosRegistros);
+  };
+
+  // Helper para convertir fecha de YYYY-MM-DD a DD/MM/YYYY
+  const formatDate = (dateString: string): string => {
+    if (!dateString) return "";
+    const [year, month, day] = dateString.split("-");
+    return `${day}/${month}/${year}`;
   };
 
   // Generar PDF
@@ -83,7 +90,7 @@ export default function RDAPDA() {
           startY: 30,
           head: [["Fecha", "Agua de entrada Pipa", "Numero de Muestra", "Tamaño de la muestra", "Metodo de Analisis", "Realizó", "Observaciones"]],
           body: registros.map((r) => [
-            r.fecha,
+            formatDate(r.fecha),  // ✅ Fecha formateada como DD/MM/YYYY
             r.aguaEntrada,
             r.numeroMuestra,
             r.tamanoMuestra,

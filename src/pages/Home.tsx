@@ -7,7 +7,7 @@ export default function Home() {
   const [error, setError] = useState("");
 
   // Lista de nombres válidos
-  const nombresValidos = [ 'Juan Pablo Sanchez Mares', 'juan pablo sanchez mares', 'JUAN PABLO SANCHEZ MARES', 'Juan Pablo Sánchez Mares' ];
+  const nombresValidos = [ 'Juan Pablo Sanchez Mares', 'juan pablo sanchez mares', 'JUAN PABLO SANCHEZ MARES', 'Juan Pablo Sánchez Mares', 'Rafa' ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
