@@ -17,7 +17,7 @@ type Registro = {
     tuberia: boolean[];
     limpiezaAnaquel: boolean[];
   };
-  reviso: string;
+  //reviso: string;
   actividad: string;
 };
 
@@ -57,7 +57,7 @@ export default function BDL() {
         tuberia: crearDiasVacios(),
         limpiezaAnaquel: crearDiasVacios(),
       },
-      reviso: nombreUsuario,
+      //reviso: nombreUsuario,
       actividad: "",
     },
   ]);
@@ -80,7 +80,7 @@ export default function BDL() {
             tuberia: crearDiasVacios(),
             limpiezaAnaquel: crearDiasVacios(),
           },
-          reviso: nombreUsuario,
+         // reviso: nombreUsuario,
           actividad: "",
         },
       ]);
