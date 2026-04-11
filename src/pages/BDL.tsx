@@ -209,13 +209,13 @@ export default function BDL() {
 
           <input type="text" value={nombreUsuario} readOnly style={{ padding: "10px", borderRadius: "8px", backgroundColor: "#2d3436", color: "#dfe6e9", fontWeight: "bold" }} />
 
-          <input
+          {/*<input
             type="text"
             placeholder="Actividad"
             value={registro.actividad}
             onChange={(e) => handleChange(index, "actividad", e.target.value)}
             style={{ padding: "10px", borderRadius: "8px", border: "1px solid #2980b9" }}
-          />
+            />*/}
         </div>
       ))}
 
